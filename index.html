@@ -1,0 +1,27 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Make Me Move</title>
+</head>
+
+<body>
+  <div id="react-root"></div>
+  <script>
+    //webpack hack, otherwise it complains that there is not `src` attribute on the script
+    document.currentScript.src = '';
+
+    //allow hot swapping in production
+    let bundle = './build/bundle.js';
+    if (typeof process !== 'undefined' && process.env.ENVIRONMENT === 'DEV') {
+      bundle = 'http://localhost:8092/build/bundle.js';
+    }
+    var script = document.createElement('script');
+    script.setAttribute('src', bundle);
+    document.getElementsByTagName("head")[0].appendChild(script);
+  </script>
+
+</body>
+
+</html>

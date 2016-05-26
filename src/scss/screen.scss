@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background: #FFF8E7;
+  text-align: center;
+  font: 15px/1.5em 'Raleway';
+  margin: 0;
+  padding: 0;
+  color: #66595c;
+}
+input {
+  font: 14px/1.5em 'Raleway';
+}
+h1 {
+  margin: 1rem 0 2rem;
+  color: #66595c;
+  font-size: 1.4rem;
+  .icon {
+    position: relative;
+    top: 10px;
+    background-image: url('../assets/app-icon/weights.png');
+    background-size: 35px 35px;
+    display: inline-block;
+    height: 35px;
+    width: 35px;
+    margin: 0 10px 0 0;
+  }
+}
+/**
+ * Create a reminder box.
+ */
+.reminder-create {
+  padding: 1rem;
+  width: 80%;
+  background: #DCD6C7;
+  border: 1px solid #D2CCBD;
+  //box-shadow: 0px 0px 10px #9C9889;
+  margin: 0 auto;
+  h2 {
+    font-size: 1em;
+    margin: 0 0 0rem;
+    cursor:pointer;
+  }
+  form {
+    transition: max-height .4s ease;
+    max-height: 0;
+    overflow: hidden;
+
+    .form-group {
+      width: 300px;
+      margin: 0 auto 0.5em;
+
+      &:first-of-type{
+        margin-top:1em;
+      }
+
+      label {
+        display: block;
+        text-align: left;
+        width: 100%;
+        font-size: 0.8em;
+      }
+      input {
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        padding: 0.2em 0.5em;
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+  button.button {
+    display: block;
+    height: auto;
+    margin: 20px auto;
+    padding: 0.2em 1.2em;
+    color: #EFEAE1;
+    line-height: 1.5;
+    font-size: 14px;
+    font-weight: 400;
+    text-shadow: none;
+    border: 1px solid #9E2C1F;
+    border-radius: 2px;
+    background: #BA3525;
+    width: 300px;
+    &:hover {
+      text-decoration: none;
+      background: #c43627;
+    }
+  }
+}
+/**
+ * Reminders' list.
+ */
+.reminders {
+  margin: 2em 0 0;
+  .reminder {
+    position: relative;
+    background: #F1EDE4;
+    margin: 0.5em auto;
+    padding: 0.5em;
+    text-align: left;
+    width: 80%;
+    .reminder-challenge {
+      font-weight: bold;
+    }
+    .reminder-info {
+      font-size: 0.9em;
+      font-style: italic;
+      margin-bottom: 0.5em;
+    }
+    .reminder-timer {
+      font-size: 0.9em;
+      font-style: italic;
+    }
+    .reminder-delete {
+      position: absolute;
+      top: 0;
+      right: 5px;
+
+      padding: 5px;
+      cursor: pointer;
+      color: #999;
+      &:hover {
+        //text-decoration: underline;
+      }
+    }
+  }
+}
