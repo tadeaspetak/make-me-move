@@ -14,6 +14,10 @@ Naturally, it can be used to help you perform any task that requires little effo
 Maybe, your new resolution is to drink 10 glasses of water a day. Or would you like to learn a new word every other hour?
 I use to perform reality checks more frequently to improve my chances of [lucid dreaming](http://lucid.wikia.com/wiki/Reality_check).
 
+Latest packaged versions of the app can be found
+[here for OS X](make-me-move.tadeaspetak.net/MakeMeMove-darwin-x64.zip) and
+[here for Windows](http://make-me-move.tadeaspetak.net/MakeMeMove-win32-ia32.zip).
+
 ## Run
 
 Before you can try it out, run the following commands:
@@ -62,7 +66,7 @@ are written in it.
 Let's have a look at an outline of the framework:
 
 - You could see it as a version of [node.js](https://nodejs.org/en/) focused on desktop, rather than a server. Also,
-it could be seen as Chromium controlled by JavaScript.
+it could be seen as minimal Chromium controlled by JavaScript.
 - There are two types of processes - the **main** and **renderer** process. The main process has access
 to native GUI and other resources and APIs. It manages child renderer processes which
 are created by instantiating `BrowserWindow`. Each browser window runs in a separate thread and
