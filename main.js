@@ -29,7 +29,7 @@ function createWindow() {
     minHeight: 400
   });
   mainWindow.loadURL('file://' + __dirname + '/index.html');
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 
   // the main window has been closed, dereference the window(s)
   mainWindow.on('closed', () => mainWindow = null);

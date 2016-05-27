@@ -59,7 +59,7 @@ export default class ReminderCreate extends React.Component {
   render() {
     return <div className="reminder-create">
       <h2 onClick={this.handleAddClick.bind(this)}>
-        Add a new task
+        Add a new reminder
       </h2>
       <form
         onSubmit={this.handleSubmit.bind(this)}
