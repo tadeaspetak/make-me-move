@@ -12,7 +12,7 @@ export default class Reminders extends React.Component {
   render() {
     var reminders = this.props.reminders.map(reminder => {
       return <Reminder
-        remaining={reminder.timer.remaining}
+        remaining={reminder.schedule.remaining}
         delete={this.props.delete}
         key={reminder.challenge}
         data={reminder} />;

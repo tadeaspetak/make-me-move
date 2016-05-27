@@ -21,7 +21,7 @@ export default class Reminder extends React.Component {
           starting at <strong>{this.props.data.start}</strong>,
           ending at <strong>{this.props.data.finish}</strong>.
         </div>
-        <div className="reminder-timer">
+        <div className="reminder-schedule">
           (Scheduled to run in <strong>{this.formatTime(this.props.remaining)}</strong>...)
     </div>
       <span
@@ -30,9 +30,11 @@ export default class Reminder extends React.Component {
     </div>;
   }
   /**
-   * Format time in seconds into a human-friendly `hh:mm:ss`.
+   * Format time in milliseconds into a human-friendly `hh:mm:ss`.
    */
   formatTime(remaining){
+    remaining = Math.ceil(remaining / 1000);
+
     function format(value, previous, following){
       value = previous ? (value < 10 ? `0${value}` : value) : (value === 0 ? '' : value);
       return following ? (value !== '' ? `${value}:` : '') : value;

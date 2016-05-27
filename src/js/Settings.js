@@ -24,10 +24,10 @@ class Settings {
    * Save the settings.
    */
   static save(settings, callback) {
-      //the timers should not be saved
+      //the schedules should not be saved!
       if(settings.reminders){
         settings = JSON.parse(JSON.stringify(settings));
-        settings.reminders.forEach(reminder => delete reminder.timer);
+        settings.reminders.forEach(reminder => delete reminder.schedule);
       }
 
       jsonfile.writeFile(Settings.path, settings, error => {

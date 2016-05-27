@@ -12,7 +12,7 @@ let template = [{
   submenu: [{
     label: `Give me a 30-minute break!`,
     click(event, focusedWindow) {
-      focusedWindow.send('postpone', 1800);
+      focusedWindow.send('postpone', 1800000);
     }
   }, {
     type: 'separator'

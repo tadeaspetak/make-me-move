@@ -7,14 +7,13 @@ const dialog = window.require('electron').remote.dialog;
 require('./scss/fonts.scss');
 require('./scss/screen.scss');
 require('./assets/app-icon/weights-tiny.png');
-//require('./js/main/menu.js');
 
 //components
 import ReminderCreate from './js/components/ReminderCreate.js';
 import Reminders from './js/components/Reminders.js';
 
-//timer utility
-import Timer from './js/Timer.js';
+//schedule utility
+import Schedule from './js/Schedule.js';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -25,60 +24,60 @@ export default class App extends React.Component {
       }
     };
   }
-  componentWillMount(){
-    //load the settings
-    var settings = ipcRenderer.sendSync('load-data');
-    settings.reminders.forEach(reminder => this.scheduleReminder(reminder));
+  componentWillMount() {
+    //load the settings & start ticking
+    let settings = ipcRenderer.sendSync('load-data');
+    settings.reminders.forEach(reminder => reminder.schedule = new Schedule(reminder));
+    this.tick(settings);
 
-    this.handleRemindersUpdate(settings);
-
-    ipcRenderer.on('postpone', (event, seconds) => {
-      this.state.settings.reminders.forEach(reminder => reminder.timer.postpone(seconds));
+    //on postpone click
+    ipcRenderer.on('postpone', (event, milliseconds) => {
+      this.state.settings.reminders.forEach(reminder => reminder.schedule.postponeBy(milliseconds));
       this.handleRemindersUpdate();
 
       //show a notification
-      var minutes = Math.floor(seconds / 60);
+      var minutes = Math.floor(milliseconds / 60000);
       new Notification(this.state.settings.postpone.heading.replace('${minutes}', minutes), {
         body: this.state.settings.postpone.body.replace('${minutes}', minutes)
       });
     });
   }
-  handleRemindersUpdate(settings){
+  handleRemindersUpdate(settings) {
     settings = settings || this.state.settings;
-    if(settings.reminders){
+    if (settings.reminders) {
       settings.reminders = settings.reminders.sort((a, b) => {
-        return a.timer.remaining > b.timer.remaining;
+        return a.schedule.remaining > b.schedule.remaining;
       });
     }
     this.setState({settings: settings});
   }
   /**
-   * Schedule a reminder.
-   *
-   * Create a `Timer` object for the given reminder
-   * and save it into the reminder's `timer` property.
-   */
-  scheduleReminder(reminder){
-    var self = this;
-    reminder.timer = new Timer(
-      reminder,
-      () => this.setState({settings: this.state.settings}),
-      () => {
-        //show the notification
+  * Tick.
+  */
+  tick(settings) {
+    settings = settings || this.state.settings;
+    settings.reminders.forEach(reminder => {
+      let remaining = reminder.schedule.computeRemaining();
+      if(remaining <= 0){
         new Notification(reminder.challenge, {
-          body: this.state.settings.comment.replace('${minutes}', reminder.repeat),
-          requireInteraction: true
+          body: this.state.settings.comment.replace('${minutes}', reminder.repeat)
         });
-        self.scheduleReminder(reminder);
-      });
+        reminder.schedule.reset();
+      } else {
+        reminder.schedule.remaining = remaining;
+      }
+    });
+    this.handleRemindersUpdate(settings);
 
-    this.handleRemindersUpdate();
+    //schedule the next tick
+    let next = 1000 - new Date().getTime() % 1000;
+    this.timeout = setTimeout(this.tick.bind(this), next === 0 ? 1000 : next);
   }
   /**
-   * Create a new reminder.
-   */
-  createReminder(reminder){
-    this.scheduleReminder(reminder);
+  * Create a new reminder.
+  */
+  createReminder(reminder) {
+    reminder.schedule = new Schedule(reminder);
     this.state.settings.reminders.push(reminder);
     this.handleRemindersUpdate();
 
@@ -86,16 +85,14 @@ export default class App extends React.Component {
     ipcRenderer.send('save-data', this.state.settings);
   }
   /**
-   * Delete a reminder after asking for user confirmation.
-   */
-  deleteReminder(reminder){
+  * Delete a reminder after asking for user confirmation.
+  */
+  deleteReminder(reminder) {
     dialog.showMessageBox({
       buttons: [this.state.settings.delete.confirm, this.state.settings.delete.cancel],
       message: this.state.settings.delete.message.replace('${challenge}', reminder.challenge)
-    },response => {
-      if(response === 0){
-        //don't forget to stop the timer!
-        reminder.timer.stop();
+    }, response => {
+      if (response === 0) {
         this.state.settings.reminders.splice(this.state.settings.reminders.indexOf(reminder), 1);
         this.setState({settings: this.state.settings});
         ipcRenderer.send('save-data', this.state.settings);

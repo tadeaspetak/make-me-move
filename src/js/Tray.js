@@ -14,7 +14,7 @@ app.on('ready', () => {
       label: settings.postpone.button,
       type: 'normal',
       click: (event, focusedWindow) => {
-        focusedWindow.send('postpone', 1800);
+        focusedWindow.send('postpone', 1800000);
       }
     }]);
     //TODO: the icon is NOT found when ASAR packaging is used!
