@@ -10,7 +10,7 @@ The app allows you to schedule reminders repeated at regular intervals between c
 Once the time has come to *”Stretch your neck, it’s getting stiff!”*, *”Do your eye gymnastics, matey!”* or even
 *”C’mon! Smile at someone :)”*, it shows a notification. That’s it, it can’t do no more, the rest is up to you.
 
-Naturally, it can be used to help you perform any task that requires little effort but needs to be repeated often enough.
+Naturally, it can assist you in perform any task that requires little effort but needs to be repeated often enough.
 Maybe, your new resolution is to drink 10 glasses of water a day. Or would you like to learn a new word every other hour?
 I use to perform reality checks more frequently to improve my chances of [lucid dreaming](http://lucid.wikia.com/wiki/Reality_check).
 
@@ -20,23 +20,13 @@ Latest packaged versions of the app can be found
 
 ## Run
 
-Before you can try it out, run the following commands:
+To install the dependencies, simply run:
 
 ``` bash
-# install electron-prebuilt globally
-npm i -g electron-prebuilt
-# install electron-packager globally
-npm i -g electron-packager
-# install webpack globally
-npm i -g webpack
-# install webpack-dev-server globally
-npm i -g webpack-dev-server
-
-# install all the necessary local modules specified in `package.json`
 npm i
 ```
 
-Then, to run in development mode:
+Then, to run the app in development mode, run **both of the commands below** (you need two terminals or two tabs):
 
 ``` bash
 # first tab, allowing hot swap
