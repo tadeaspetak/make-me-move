@@ -10,7 +10,7 @@ The app allows you to schedule reminders repeated at regular intervals between c
 Once the time has come to *”Stretch your neck, it’s getting stiff!”*, *”Do your eye gymnastics, matey!”* or even
 *”C’mon! Smile at someone :)”*, it shows a notification. That’s it, it can’t do no more, the rest is up to you.
 
-Naturally, it can assist you in perform any task that requires little effort but needs to be repeated often enough.
+Naturally, it can assist you in performing any task that requires little effort but needs to be repeated often enough.
 Maybe, your new resolution is to drink 10 glasses of water a day. Or would you like to learn a new word every other hour?
 I use to perform reality checks more frequently to improve my chances of [lucid dreaming](http://lucid.wikia.com/wiki/Reality_check).
 
