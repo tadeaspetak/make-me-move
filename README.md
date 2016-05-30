@@ -18,7 +18,9 @@ Latest packaged versions of the app can be found
 [here for OS X](http://make-me-move.tadeaspetak.net/MakeMeMove-darwin-x64.zip) and
 [here for Windows](http://make-me-move.tadeaspetak.net/MakeMeMove-win32-ia32.zip).
 
-## Run
+## Development
+
+### Run
 
 To install the dependencies, simply run:
 
@@ -26,7 +28,7 @@ To install the dependencies, simply run:
 npm i
 ```
 
-Then, to run the app in development mode, run **both of the commands below** (you need two terminals or two tabs):
+Then, to start the app in development mode, run **both of the commands below** (you need two terminals or two tabs):
 
 ``` bash
 # first tab, allowing hot swap
@@ -46,7 +48,7 @@ npm run pack-win
 npm run pack-linux
 ```
 
-## Development
+### Electron
 
 The app was created while experimenting with [Electron](http://electron.atom.io/) during a competence day at
 [Jayway](https://jayway.com) in May, 2016. Electron is a framework that allows
@@ -73,11 +75,11 @@ I have never written any desktop app in anything other than Java Swing and I rem
 My Electron experience has been incomparably more enjoyable and I would definitely take it into
 consideration if I were to develop a serious desktop app.
 
-## Development environment
+### Tools & Environment
 
 The great thing about developing a desktop app using the ubiquitous web stack is that
 you have all your handy frameworks & tools at your disposal. Make Me Move has been written
 using [React](https://facebook.github.io/react/) and [Webpack](https://webpack.github.io/).
 
-This makes it relatively easy to set up hot swapping which is, in my opinion, quite rare in
+This makes it relatively easy to, for example, set up hot swapping which is quite rare in
 the realm of native desktop apps. Check the source to see how it's done.
