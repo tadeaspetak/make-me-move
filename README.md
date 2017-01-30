@@ -15,8 +15,8 @@ Maybe, your new resolution is to drink 10 glasses of water a day. Or would you l
 I use to perform reality checks more frequently to improve my chances of [lucid dreaming](http://lucid.wikia.com/wiki/Reality_check).
 
 Latest packaged versions of the app can be found
-[here for OS X](http://make-me-move.tadeaspetak.net/MakeMeMove-darwin-x64.zip) and
-[here for Windows](http://make-me-move.tadeaspetak.net/MakeMeMove-win32-ia32.zip).
+[here for OS X](http://make-me-move.tadeaspetak.com/MakeMeMove-darwin-x64.zip) and
+[here for Windows](http://make-me-move.tadeaspetak.com/MakeMeMove-win32-ia32.zip).
 
 ## Development
 
